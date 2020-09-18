@@ -1,4 +1,3 @@
-  
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,36 +19,33 @@ button {
 </body>
 <script>
  
-var razorpay = new Razorpay({
-key: 'rzp_live_ILgsfZCZoFIKMb',
-image: 'https://i.imgur.com/n5tjHFD.png',
-//callback_url: 'https://www.google.com',
-//redirect: true
-});
+ let rzp = new Razorpay({
+     key: 'rzp_live_ILgsfZCZoFIKMb' //Add your API Key here...
+     });
+    
+ const paymentData = {
+         amount: 100,
+         description: 'Test Description',
+         method: 'upi',
+         contact: +917019284852,
+         email: 'h22tswift@gmail.com'
+     };
+ document.querySelector('#trigger-payment').addEventListener('click', (e) => {
 
-var data = {
-"amount":100,
-//"order_id": "order_FW5TWBDcxToW9V",
-"contact":"9885184604",
-"email":"hemanth0005@gmail.com",
-"method":"upi",
-};
-
-razorpay.checkPaymentAdapter('gpay').then(() => {
+     rzp.checkPaymentAdapter('gpay').then(() => {
            alert('GPay Available');
-           razorpay.createPayment(paymentData, {gpay: true})
+           rzp.createPayment(paymentData, {gpay: true})
      }).catch(() => {
           alert('GPay Unavailable');
-       //   paymentData.vpa = 'h22tswift@okhdfcbank';
-         // rzp.createPayment(paymentData);
+         // paymentData.vpa = 'h22tswift@okhdfcbank';
+          //rzp.createPayment(paymentData);
 })
+  e.preventDefault(); 
+
+ });
     
     
 
 </script>
 
 </html>
-
-
-
-
